@@ -29,18 +29,20 @@ public class CategoryController {
 	public String admin_category_add(MultipartFile image,HttpServletRequest request) throws IllegalStateException, IOException{ 
 		String path = request.getServletContext().getRealPath("/img/category/");
 		String name = request.getParameter("name");
-		if(image!=null) {
+		/*if(image!=null) {
 			//文件类型
 			String contentType = image.getContentType();
 			//获取文件后缀
-			String lastname = image.getName().substring(image.getName().lastIndexOf(".")+1);
+//			String lastname = image.getName().substring(image.getName().lastIndexOf(".")+1);
+			String lastname = String.valueOf(image.getOriginalFilename().lastIndexOf(".")+1);
 
 			Category category = new Category();
 			category.setName(name);
 			categoryService.add(category);
 			int id = category.getId();
+			String file = image.getOriginalFilename();
 			//文件名称
-			String fileName =String.valueOf(id)+"."+lastname;
+			String fileName =String.valueOf(id)+".jpg";
 			//文件大小
 			long size = image.getSize();
 			System.out.println("文件类型"+contentType);
@@ -48,9 +50,34 @@ public class CategoryController {
 			System.out.println("文件大小"+size);
 			//上传文件
 			image.transferTo(new File(path,fileName));
-		}
-		
+		}*/
+		upload(image, path, name);
 		return "redirect:/listCategory/1";
+	}
+	@RequestMapping("admin_category_edit/{id}/{currentPage}")
+	public String admin_category_edit(@PathVariable int id,@PathVariable int currentPage,Map<String, Object> map) {
+		Category category = categoryService.queryById(Category.class, id);
+		map.put("c", category);
+		map.put("sp", currentPage);
+		return "admin/editCategory";
+	}
+	@RequestMapping("admin_category_update")
+	public String admin_category_update(MultipartFile image,HttpServletRequest request) throws IllegalStateException, IOException {
+		String path = request.getServletContext().getRealPath("/img/category/");
+		int id = Integer.parseInt(request.getParameter("id"));
+		String name = request.getParameter("name");
+		String currentPage = request.getParameter("sp");
+		upload(image, path, name);
+		Category c = new Category();
+		c.setId(id);
+		c.setName(name);
+		categoryService.update(c);
+		return "redirect:/listCategory/"+currentPage;
+	}
+	@RequestMapping("admin_category_delete/{id}/{currentPage}")
+	public String admin_category_delete(@PathVariable String id,@PathVariable String currentPage) {
+		categoryService.deleteById(Category.class, Integer.parseInt(id));
+		return "redirect:/listCategory/"+currentPage;
 	}
 	@RequestMapping("category_queryByPage")
 	private String queryByPage(){
@@ -83,5 +110,31 @@ public class CategoryController {
 		map.put("pageCounts", pageCounts);
 		map.put("cs", list);
 		return "/admin/listCategory";
+	}
+	
+	public void upload(MultipartFile image,String path,String name) throws IllegalStateException, IOException {
+		if(image!=null) {
+			//文件类型
+			String contentType = image.getContentType();
+			//获取文件后缀
+//			String lastname = image.getName().substring(image.getName().lastIndexOf(".")+1);
+			String lastname = String.valueOf(image.getOriginalFilename().lastIndexOf(".")+1);
+
+			//可以加个判断
+			Category category = new Category();
+			category.setName(name);
+			categoryService.add(category);
+			int id = category.getId();
+			String file = image.getOriginalFilename();
+			//文件名称
+			String fileName =String.valueOf(id)+".jpg";
+			//文件大小
+			long size = image.getSize();
+			System.out.println("文件类型"+contentType);
+			System.out.println("文件名称"+fileName);
+			System.out.println("文件大小"+size);
+			//上传文件
+			image.transferTo(new File(path,fileName));
+		}
 	}
 }

@@ -37,7 +37,7 @@
 	<div class="panel panel-warning editDiv">
 		<div class="panel-heading">编辑分类</div>
 		<div class="panel-body">
-			<form method="post" id="editForm" action="admin_category_update"  enctype="multipart/form-data">
+			<form method="post" id="editForm" action="${pageContext.request.contextPath }/admin_category_update"  enctype="multipart/form-data">
 				<table class="editTable">
 					<tr>
 						<td>分类名称</td>
@@ -52,6 +52,7 @@
 					<tr class="submitTR">
 						<td colspan="2" align="center">
 							<input type="hidden" name="id" value="${c.id}">
+							<input type="hidden" name="sp" value="${sp}">
 							<button type="submit" class="btn btn-success">提 交</button>
 						</td>
 					</tr>

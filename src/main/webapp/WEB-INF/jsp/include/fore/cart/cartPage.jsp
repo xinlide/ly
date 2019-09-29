@@ -133,7 +133,7 @@ $(function(){
 			}
 		});
 		params = params.substring(1);
-		location.href="forebuy?"+params;
+		location.href="${pageContext.request.contextPath }/forebuy?"+params;
 	});
 	
 	
@@ -227,7 +227,7 @@ function syncPrice(pid,num,price){
 			<thead>
 				<tr>
 					<th class="selectAndImage">
-							<img selectit="false" class="selectAllItem" src="img/site/cartNotSelected.png">				
+							<img selectit="false" class="selectAllItem" src="${pageContext.request.contextPath }/img/site/cartNotSelected.png">				
 					全选
 					
 					</th>
@@ -242,23 +242,23 @@ function syncPrice(pid,num,price){
 				<c:forEach items="${ois }" var="oi">
 					<tr oiid="${oi.id}" class="cartProductItemTR">
 						<td>
-							<img selectit="false" oiid="${oi.id}" class="cartProductItemIfSelected" src="img/site/cartNotSelected.png">
-							<a style="display:none" href="#nowhere"><img src="img/site/cartSelected.png"></a>
-							<img class="cartProductImg"  src="img/productSingle_middle/${oi.product.firstProductImage.id}.jpg">
+							<img selectit="false" oiid="${oi.id}" class="cartProductItemIfSelected" src="${pageContext.request.contextPath }/img/site/cartNotSelected.png">
+							<a style="display:none" href="#nowhere"><img src="${pageContext.request.contextPath }/img/site/cartSelected.png"></a>
+							<img class="cartProductImg"  src="${pageContext.request.contextPath }/img/productSingle_middle/${oi.product.firstProductImage.id}.jpg">
 						</td>
 						<td>
 							<div class="cartProductLinkOutDiv">
-								<a href="foreproduct?pid=${oi.product.id}" class="cartProductLink">${oi.product.name}</a>
+								<a href="${pageContext.request.contextPath }/foreproduct/${oi.product.id}" class="cartProductLink">${oi.product.name}</a>
 								<div class="cartProductLinkInnerDiv">
-									<img src="img/site/creditcard.png" title="支持信用卡支付">
-									<img src="img/site/7day.png" title="消费者保障服务,承诺7天退货">
-									<img src="img/site/promise.png" title="消费者保障服务,承诺如实描述">
+									<img src="${pageContext.request.contextPath }/img/site/creditcard.png" title="支持信用卡支付">
+									<img src="${pageContext.request.contextPath }/img/site/7day.png" title="消费者保障服务,承诺7天退货">
+									<img src="${pageContext.request.contextPath }/img/site/promise.png" title="消费者保障服务,承诺如实描述">
 								</div>
 							</div>
 							
 						</td>
 						<td>
-							<span class="cartProductItemOringalPrice">￥${oi.product.originalPrice}</span>
+							<span class="cartProductItemOringalPrice">￥${oi.product.orignalPrice}</span>
 							<span  class="cartProductItemPromotionPrice">￥${oi.product.promotePrice}</span>
 							
 						</td>
@@ -290,7 +290,7 @@ function syncPrice(pid,num,price){
 	</div>
 	
 	<div class="cartFoot">
-		<img selectit="false" class="selectAllItem" src="img/site/cartNotSelected.png">
+		<img selectit="false" class="selectAllItem" src="${pageContext.request.contextPath }/img/site/cartNotSelected.png">
 		<span>全选</span>
 <!-- 		<a href="#">删除</a> -->
 		

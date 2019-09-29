@@ -16,7 +16,7 @@
     $(function() {
         $("input.pvValue").keyup(function(){
             var value = $(this).val();
-            var page = "admin_propertyValue_update";
+            var page = "${pageContext.request.contextPath }/admin_propertyValue_update";
             var pvid = $(this).attr("pvid");
             var parentSpan = $(this).parent("span");
             parentSpan.css("border","1px solid yellow");

@@ -17,6 +17,7 @@
 		http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd">
 		<!-- 配置扫描包 -->
 		<context:component-scan base-package="com.entor.controller"/>
+		<!-- <context:component-scan base-package="com.entor.controller.fore"/> -->
 		<!-- 不对静态资源过滤，列入：css、html、jsp、 -->
 		<mvc:default-servlet-handler/>
 		<!-- 使用注解 -->

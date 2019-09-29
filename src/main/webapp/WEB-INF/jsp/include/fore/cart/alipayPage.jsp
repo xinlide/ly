@@ -7,7 +7,7 @@
 	
 <div class="aliPayPageDiv">
 	<div class="aliPayPageLogo">
-		<img class="pull-left" src="img/site/simpleLogo.png">
+		<img class="pull-left" src="${pageContext.request.contextPath }/img/site/simpleLogo.png">
 		<div style="clear:both"></div>
 	</div>
 	
@@ -18,12 +18,12 @@
 		
 	</div>
 	<div>
-		<img class="aliPayImg" src="img/site/alipay2wei.png">
+		<img class="aliPayImg" src="${pageContext.request.contextPath }/img/site/alipay2wei.png">
 	</div>
 
 	
 	<div>
-		<a href="forepayed?oid=${param.oid}&total=${param.total}"><button class="confirmPay">确认支付</button></a>
+		<a href="${pageContext.request.contextPath }/forepayed?oid=${order_.id}&total=${param.total}"><button class="confirmPay">确认支付</button></a>
 	</div>
 
 </div>

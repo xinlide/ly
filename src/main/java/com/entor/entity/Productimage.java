@@ -3,7 +3,7 @@ package com.entor.entity;
 public class Productimage {
 
 	private int id;
-	private Product product;
+	private int pid;
 	private String type;
 	public int getId() {
 		return id;
@@ -11,11 +11,11 @@ public class Productimage {
 	public void setId(int id) {
 		this.id = id;
 	}
-	public Product getProduct() {
-		return product;
+	public int getPid() {
+		return pid;
 	}
-	public void setProduct(Product product) {
-		this.product = product;
+	public void setPid(int pid) {
+		this.pid = pid;
 	}
 	public String getType() {
 		return type;
@@ -25,8 +25,9 @@ public class Productimage {
 	}
 	@Override
 	public String toString() {
-		return "Productimage [id=" + id + ", product=" + product + ", type=" + type + "]";
+		return "Productimage [id=" + id + ", pid=" + pid + ", type=" + type + "]";
 	}
+	
 	
 	
 }

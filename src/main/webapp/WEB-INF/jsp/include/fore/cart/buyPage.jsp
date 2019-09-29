@@ -5,11 +5,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" isELIgnored="false"%>
 <div class="buyPageDiv">
-  <form action="forecreateOrder" method="post">
+  <form action="${pageContext.request.contextPath }/forecreateOrder" method="post">
   
 	<div class="buyFlow">
-		<img class="pull-left" src="img/site/simpleLogo.png">
-		<img class="pull-right" src="img/site/buyflow.png">
+		<img class="pull-left" src="${pageContext.request.contextPath }/img/site/simpleLogo.png">
+		<img class="pull-right" src="${pageContext.request.contextPath }/img/site/buyflow.png">
 		<div style="clear:both"></div>
 	</div>
 	<div class="address">
@@ -74,16 +74,16 @@
 			<tbody class="productListTableTbody">
 				<c:forEach items="${ois}" var="oi" varStatus="st" >
 					<tr class="orderItemTR">
-						<td class="orderItemFirstTD"><img class="orderItemImg" src="img/productSingle_middle/${oi.product.firstProductImage.id}.jpg"></td>
+						<td class="orderItemFirstTD"><img class="orderItemImg" src="${pageContext.request.contextPath }/img/productSingle_middle/${oi.product.firstProductImage.id}.jpg"></td>
 						<td class="orderItemProductInfo">
-						<a  href="foreproduct?pid=${oi.product.id}" class="orderItemProductLink">
+						<a  href="${pageContext.request.contextPath }/foreproduct?pid=${oi.product.id}" class="orderItemProductLink">
 							${oi.product.name}
 						</a>
 						
 						
-							<img src="img/site/creditcard.png" title="支持信用卡支付">
-							<img src="img/site/7day.png" title="消费者保障服务,承诺7天退货">
-							<img src="img/site/promise.png" title="消费者保障服务,承诺如实描述">
+							<img src="${pageContext.request.contextPath }/img/site/creditcard.png" title="支持信用卡支付">
+							<img src="${pageContext.request.contextPath }/img/site/7day.png" title="消费者保障服务,承诺7天退货">
+							<img src="${pageContext.request.contextPath }/img/site/promise.png" title="消费者保障服务,承诺如实描述">
 						
 						</td>
 						<td>
@@ -120,7 +120,7 @@
 			<div class="pull-left">
 				<span class="leaveMessageText">给卖家留言:</span>
 				<span>
-					<img class="leaveMessageImg" src="img/site/leaveMessage.png">
+					<img class="leaveMessageImg" src="${pageContext.request.contextPath }/img/site/leaveMessage.png">
 				</span>
 				<span class="leaveMessageTextareaSpan">
 					<textarea name="userMessage" class="leaveMessageTextarea"></textarea>
@@ -132,7 +132,7 @@
 			
 			<span class="pull-right">店铺合计(含运费): ￥<fmt:formatNumber type="number" value="${total}" minFractionDigits="2"/></span>
 		</div>
-		
+		<input type="hidden" name="total" value="${total}"/>
 
 				
 	

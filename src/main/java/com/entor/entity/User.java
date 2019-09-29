@@ -5,6 +5,14 @@ public class User {
 	private int id;
 	private String name;
 	private String password;
+	
+	private String anonymousName;
+	public String getAnonymousName() {
+		return anonymousName;
+	}
+	public void setAnonymousName(String anonymousName) {
+		this.anonymousName = anonymousName;
+	}
 	public int getId() {
 		return id;
 	}
@@ -25,7 +33,8 @@ public class User {
 	}
 	@Override
 	public String toString() {
-		return "User [id=" + id + ", name=" + name + ", password=" + password + "]";
+		return "User [id=" + id + ", name=" + name + ", password=" + password + ", anonymousName=" + anonymousName
+				+ "]";
 	}
 	
 	

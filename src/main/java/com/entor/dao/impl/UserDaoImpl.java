@@ -16,7 +16,7 @@ public class UserDaoImpl extends BaseDaoImpl<User> implements UserDao{
 	@Override
 	public User login(String name, String password) {
 		Map<String, String> map = new HashMap<String, String>();
-		map.put("username", name);
+		map.put("name", name);
 		map.put("password", password);
 		return getSqlSession().selectOne(namespace+".login",map);
 	}

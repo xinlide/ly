@@ -7,6 +7,9 @@
 	<select id="queryById" resultType="Category">
 		select * from category where id = #{id}
 	</select>
+	<select id="queryAll" resultType="Category">
+		select * from category order by id desc
+	</select>
 	<insert id="add" parameterType="Category">
 		insert into category (name) values (#{name})
 		<selectKey keyProperty="id" order="AFTER" resultType="int">

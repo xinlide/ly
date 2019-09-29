@@ -10,7 +10,7 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Repository;
 
 import com.entor.dao.PropertyDao;
-import com.entor.dao.PropertyImageDao;
+import com.entor.dao.ProductImageDao;
 import com.entor.dao.UserDao;
 import com.entor.entity.Property;
 import com.entor.entity.User;

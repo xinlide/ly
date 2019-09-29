@@ -39,14 +39,14 @@ $(function(){
      
     $(".addCartButton").removeAttr("disabled");
     $(".addCartLink").click(function(){
-        var page = "forecheckLogin";
+        var page = "${pageContext.request.contextPath }/forecheckLogin";
         $.get(
                 page,
                 function(result){
                     if("success"==result){
                         var pid = ${p.id};
                         var num= $(".productNumberSetting").val();
-                        var addCartpage = "foreaddCart";
+                        var addCartpage = "${pageContext.request.contextPath }/foreaddCart";
                         $.get(
                                 addCartpage,
                                 {"pid":pid,"num":num},
@@ -73,7 +73,7 @@ $(function(){
         return false;
     });
     $(".buyLink").click(function(){
-        var page = "forecheckLogin";
+        var page = "${pageContext.request.contextPath }/forecheckLogin";
         $.get(
                 page,
                 function(result){
@@ -142,10 +142,10 @@ $(function(){
 <div class="imgAndInfo">
  
     <div class="imgInimgAndInfo">
-        <img src="img/productSingle/${p.firstProductImage.id}.jpg" class="bigImg">
+        <img src="${pageContext.request.contextPath }/img/productSingle/${p.firstProductImage.id}.jpg" class="bigImg">
         <div class="smallImageDiv">
             <c:forEach items="${p.productSingleImages}" var="pi">
-                <img src="img/productSingle_small/${pi.id}.jpg" bigImageURL="img/productSingle/${pi.id}.jpg" class="smallImage">
+                <img src="${pageContext.request.contextPath }/img/productSingle_small/${pi.id}.jpg" bigImageURL="${pageContext.request.contextPath }/img/productSingle/${pi.id}.jpg" class="smallImage">
             </c:forEach>
         </div>
         <div class="img4load hidden" ></div>
@@ -172,7 +172,7 @@ $(function(){
 
 
             <div class="productPriceDiv">
-                <div class="gouwujuanDiv"><img height="16px" src="img/site/gouwujuan.png">
+                <div class="gouwujuanDiv"><img height="16px" src="${pageContext.request.contextPath }/img/site/gouwujuan.png">
                 <span> 全天猫实物商品通用</span>
                  
                 </div>
@@ -180,7 +180,7 @@ $(function(){
                     <span class="originalPriceDesc">价格</span>
                     <span class="originalPriceYuan">¥</span>
                     <span class="originalPrice">
-                        <fmt:formatNumber type="number" value="${p.originalPrice}" minFractionDigits="2"/>
+                        <fmt:formatNumber type="number" value="${p.orignalPrice}" minFractionDigits="2"/>
                     </span>
                 </div>
 
@@ -207,14 +207,14 @@ $(function(){
                 <span class="arrow">
                     <a href="#nowhere" class="increaseNumber">
                     <span class="updown">
-                            <img src="img/site/increase.png">
+                            <img src="${pageContext.request.contextPath }/img/site/increase.png">
                     </span>
                     </a>
                      
                     <span class="updownMiddle"> </span>
                     <a href="#nowhere"  class="decreaseNumber">
                     <span class="updown">
-                            <img src="img/site/decrease.png">
+                            <img src="${pageContext.request.contextPath }/img/site/decrease.png">
                     </span>
                     </a>
                      
@@ -234,7 +234,7 @@ $(function(){
         </div>    
          
         <div class="buyDiv">
-            <a class="buyLink" href="forebuyone?pid=${p.id}"><button class="buyButton">立即购买</button></a>
+            <a class="buyLink" href="${pageContext.request.contextPath }/forebuyone/${p.id}"><button class="buyButton">立即购买</button></a>
             <a href="#nowhere" class="addCartLink"><button class="addCartButton"><span class="glyphicon glyphicon-shopping-cart"></span>加入购物车</button></a>
         </div>
     </div>

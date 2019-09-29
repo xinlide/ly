@@ -7,10 +7,10 @@
 
 <div >
 	<a href="${contextPath}">
-		<img id="simpleLogo" class="simpleLogo" src="img/site/simpleLogo.png">
+		<img id="simpleLogo" class="simpleLogo" src="${pageContext.request.contextPath }/img/site/simpleLogo.png">
 	</a>
 
-	<form action="foresearch" method="post" >
+	<form action="${pageContext.request.contextPath }/foresearch" method="post" >
 		<div class="simpleSearchDiv pull-right">
 			<input type="text" placeholder="平衡车 原汁机"  value="${param.keyword}" name="keyword">
 			<button class="searchButton" type="submit">搜天猫</button>

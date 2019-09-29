@@ -52,10 +52,10 @@
 					<td align="center">${o.totalNumber}</td>
 					<td align="center">${o.user.name}</td>
 
-					<td><fmt:formatDate value="${o.createDate}" pattern="yyyy-MM-dd HH:mm:ss"/></td>
-					<td><fmt:formatDate value="${o.payDate}" pattern="yyyy-MM-dd HH:mm:ss"/></td>
-					<td><fmt:formatDate value="${o.deliveryDate}" pattern="yyyy-MM-dd HH:mm:ss"/></td>
-					<td><fmt:formatDate value="${o.confirmDate}" pattern="yyyy-MM-dd HH:mm:ss"/></td>
+					<td>${o.createDate}</td>
+					<td>${o.payDate}</td>
+					<td>${o.deliveryDate}</td>
+					<td>${o.confirmDate}</td>
 
 					<td>
 						<button oid=${o.id} class="orderPageCheckOrderItems btn btn-primary btn-xs">查看详情</button>
@@ -72,28 +72,28 @@
 
 						<div  class="orderPageOrderItem">
 							<table width="800px" align="center" class="orderPageOrderItemTable">
-								<c:forEach items="${o.orderItems}" var="oi">
+								<%-- <c:forEach items="${o.orderitem}" var="oi"> --%>
 									<tr>
 										<td align="left">
-											<img width="40px" height="40px" src="img/productSingle/${oi.product.firstProductImage.id}.jpg">
+											<img width="40px" height="40px" src="${pageContext.request.contextPath }/img/productSingle/${o.orderitem.product.firstProductImage.id}.jpg">
 										</td>
 
 										<td>
-											<a href="foreproduct?pid=${oi.product.id}">
-												<span>${oi.product.name}</span>
+											<a href="${pageContext.request.contextPath }/foreproduct/${o.orderitem.product.id}">
+												<span>${o.orderitem.product.name}</span>
 											</a>
 										</td>
 										<td align="right">
 
-											<span class="text-muted">${oi.number}个</span>
+											<span class="text-muted">${o.totalNumber}个</span>
 										</td>
 										<td align="right">
 
-											<span class="text-muted">单价：￥${oi.product.promotePrice}</span>
+											<span class="text-muted">单价：￥${o.orderitem.product.promotePrice}</span>
 										</td>
 
 									</tr>
-								</c:forEach>
+								<%-- </c:forEach> --%>
 
 							</table>
 						</div>

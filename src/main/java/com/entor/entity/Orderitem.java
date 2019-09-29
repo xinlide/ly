@@ -37,6 +37,11 @@ public class Orderitem {
 	public void setNumber(int number) {
 		this.number = number;
 	}
+	@Override
+	public String toString() {
+		return "Orderitem [id=" + id + ", product=" + product + ", order=" + order + ", user=" + user + ", number="
+				+ number + "]";
+	}
 	
 	
 }

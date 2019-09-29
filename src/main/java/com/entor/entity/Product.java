@@ -1,6 +1,7 @@
 package com.entor.entity;
 
 import java.sql.Date;
+import java.util.List;
 
 public class Product {
 
@@ -10,8 +11,40 @@ public class Product {
 	private float orignalPrice;
 	private float promotePrice;
 	private int stock;
-	private Category category;
+	private int cid;
 	private Date datetime;
+	
+	private Productimage firstProductImage;
+	private List<Productimage> productSingleImages;
+	private List<Productimage> productDetailImages;
+
+	private int reviewCount;
+	private int saleCount;
+	
+	public List<Productimage> getProductDetailImages() {
+		return productDetailImages;
+	}
+	public void setProductDetailImages(List<Productimage> productDetailImages) {
+		this.productDetailImages = productDetailImages;
+	}
+	public List<Productimage> getProductSingleImages() {
+		return productSingleImages;
+	}
+	public void setProductSingleImages(List<Productimage> productSingleImages) {
+		this.productSingleImages = productSingleImages;
+	}
+	public int getReviewCount() {
+		return reviewCount;
+	}
+	public void setReviewCount(int reviewCount) {
+		this.reviewCount = reviewCount;
+	}
+	public int getSaleCount() {
+		return saleCount;
+	}
+	public void setSaleCount(int saleCount) {
+		this.saleCount = saleCount;
+	}
 	public int getId() {
 		return id;
 	}
@@ -48,23 +81,34 @@ public class Product {
 	public void setStock(int stock) {
 		this.stock = stock;
 	}
-	public Category getCategory() {
-		return category;
-	}
-	public void setCategory(Category category) {
-		this.category = category;
-	}
 	public Date getDatetime() {
 		return datetime;
 	}
 	public void setDatetime(Date datetime) {
 		this.datetime = datetime;
 	}
+	public int getCid() {
+		return cid;
+	}
+	public void setCid(int cid) {
+		this.cid = cid;
+	}
+	
+	public Productimage getFirstProductImage() {
+		return firstProductImage;
+	}
+	public void setFirstProductImage(Productimage firstProductImage) {
+		this.firstProductImage = firstProductImage;
+	}
 	@Override
 	public String toString() {
 		return "Product [id=" + id + ", name=" + name + ", subTitle=" + subTitle + ", orignalPrice=" + orignalPrice
-				+ ", promotePrice=" + promotePrice + ", stock=" + stock + ", datetime=" + datetime + "]";
+				+ ", promotePrice=" + promotePrice + ", stock=" + stock + ", cid=" + cid + ", datetime=" + datetime
+				+ ", firstProductImage=" + firstProductImage + ", productSingleImages=" + productSingleImages
+				+ ", productDetailImages=" + productDetailImages + ", reviewCount=" + reviewCount + ", saleCount="
+				+ saleCount + "]";
 	}
+	
 	
 	
 }

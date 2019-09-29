@@ -38,13 +38,13 @@
 <div id="loginDiv" style="position: relative">
 
 	<div class="simpleLogo">
-		<a href="${contextPath}"><img src="img/site/simpleLogo.png"></a>
+		<a href="${contextPath}"><img src="${pageContext.request.contextPath }/img/site/simpleLogo.png"></a>
 	</div>
 
 
-	<img id="loginBackgroundImg" class="loginBackgroundImg" src="img/site/loginBackground.png">
+	<img id="loginBackgroundImg" class="loginBackgroundImg" src="${pageContext.request.contextPath }/img/site/loginBackground.png">
 
-	<form class="loginForm" action="forelogin" method="post">
+	<form class="loginForm" action="${pageContext.request.contextPath }/forelogin" method="post">
 		<div id="loginSmallDiv" class="loginSmallDiv">
 			<div class="loginErrorMessageDiv">
 				<div class="alert alert-danger" >

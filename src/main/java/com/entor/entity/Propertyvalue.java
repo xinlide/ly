@@ -32,7 +32,7 @@ public class Propertyvalue {
 	}
 	@Override
 	public String toString() {
-		return "Propertyvalue [id=" + id + ", value=" + value + "]";
+		return "Propertyvalue [id=" + id + ", product=" + product + ", property=" + property + ", value=" + value + "]";
 	}
 	
 }

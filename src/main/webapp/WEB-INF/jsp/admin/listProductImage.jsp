@@ -33,7 +33,7 @@
 <div class="workingArea">
 	<ol class="breadcrumb">
 		<li><a href="admin_category_list">所有分类</a></li>
-		<li><a href="admin_product_list?cid=${p.category.id}">${p.category.name}</a></li>
+		<%-- <li><a href="admin_product_list?cid=${p.category.id}">${p.category.name}</a></li> --%>
 		<li class="active">${p.name}</li>
 		<li class="active">产品图片管理</li>
 	</ol>
@@ -79,7 +79,7 @@
 							<tr>
 								<td>${pi.id}</td>
 								<td>
-									<a title="点击查看原图" href="img/productSingle/${pi.id}.jpg"><img height="50px" src="img/productSingle/${pi.id}.jpg"></a>
+									<a title="点击查看原图" href="${pageContext.request.contextPath }/img/productSingle/${pi.id}.jpg"><img height="50px" src="${pageContext.request.contextPath }/img/productSingle/${pi.id}.jpg"></a>
 								</td>
 								<td><a deleteLink="true"
 									   href="admin_productImage_delete?id=${pi.id}"><span
@@ -132,7 +132,7 @@
 							<tr>
 								<td>${pi.id}</td>
 								<td>
-									<a title="点击查看原图" href="img/productDetail/${pi.id}.jpg"><img height="50px" src="img/productDetail/${pi.id}.jpg"></a>
+									<a title="点击查看原图" href="${pageContext.request.contextPath }/img/productDetail/${pi.id}.jpg"><img height="50px" src="${pageContext.request.contextPath }/img/productDetail/${pi.id}.jpg"></a>
 								</td>
 								<td><a deleteLink="true"
 									   href="admin_productImage_delete?id=${pi.id}"><span

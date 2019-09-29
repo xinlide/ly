@@ -12,7 +12,7 @@
 
 	<div id="footer_ensure" class="footer_ensure">
 		<a href="#nowhere">
-			<img src="img/site/ensure.png">
+			<img src="${pageContext.request.contextPath }/img/site/ensure.png">
 		</a>
 	</div>
 
@@ -51,7 +51,7 @@
 		</div>
 		<div class="descColumn">
 			<span class="descColumnTitle">手机天猫</span>
-			<a href="#nowhere" ><img src="img/site/ma.png"></a>
+			<a href="#nowhere" ><img src="${pageContext.request.contextPath }/img/site/ma.png"></a>
 		</div>
 
 	</div>
@@ -65,7 +65,7 @@
 
 	<div id="copyright" class="copyright">
 		<div class="coptyrightMiddle">
-			<img id="cateye" class="cateye" src="img/site/cateye.png">
+			<img id="cateye" class="cateye" src="${pageContext.request.contextPath }/img/site/cateye.png">
 			<div class="white_link" >
 				<a href="#nowhere" style="padding-left:0px" >关于天猫</a>
 				<a href="#nowhere" > 帮助中心</a>
@@ -109,8 +109,8 @@
 				<span>互联网药品信息服务资质证书编号：浙-（经营性）-2012-0005</span>
 				<div class="copyRightYear">&copy; 2003-2016 TMALL.COM 版权所有</div>
 				<div>
-					<img src="img/site/copyRight1.jpg">
-					<img src="img/site/copyRight2.jpg">
+					<img src="${pageContext.request.contextPath }/img/site/copyRight1.jpg">
+					<img src="${pageContext.request.contextPath }/img/site/copyRight2.jpg">
 				</div>
 			</div>
 		</div>

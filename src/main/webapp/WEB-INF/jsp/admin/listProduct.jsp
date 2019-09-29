@@ -62,18 +62,18 @@
 					<td>
 
 						<c:if test="${!empty p.firstProductImage}">
-							<img width="40px" src="img/productSingle/${p.firstProductImage.id}.jpg">
+							<img width="40px" src="${pageContext.request.contextPath }/img/productSingle/${p.firstProductImage.id}.jpg">
 						</c:if>
 
 					</td>
 					<td>${p.name}</td>
 					<td>${p.subTitle}</td>
-					<td>${p.originalPrice}</td>
+					<td>${p.orignalPrice}</td>
 					<td>${p.promotePrice}</td>
 					<td>${p.stock}</td>
-					<td><a href="admin_productImage_list?pid=${p.id}"><span
+					<td><a href="${pageContext.request.contextPath }/admin_productImage_list/${p.id}"><span
 							class="glyphicon glyphicon-picture"></span></a></td>
-					<td><a href="admin_propertyValue_edit?pid=${p.id}"><span
+					<td><a href="${pageContext.request.contextPath }/admin_propertyValue_edit/${p.id}"><span
 							class="glyphicon glyphicon-th-list"></span></a></td>
 
 					<td><a href="admin_product_edit?id=${p.id}"><span

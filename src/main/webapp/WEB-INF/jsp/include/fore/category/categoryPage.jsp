@@ -7,7 +7,7 @@
 <title>模仿天猫官网-${c.name}</title>	
 <div id="category">
 	<div class="categoryPageDiv">
-		<img src="img/category/${c.id}.jpg">
+		<img src="${pageContext.request.contextPath }/img/category/${c.id}.jpg">
 		<%@include file="sortBar.jsp"%>
 		<%@include file="productsByCategory.jsp"%>
 	</div>
