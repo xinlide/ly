@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- <mapper namespace="com.entor.mapper.userMapper"> -->
+<mapper namespace="Propertyvalue"><!-- 与接口关联上 -->
+
+	<resultMap type="Propertyvalue" id="PropertyvalueMap">
+		<id property="id" column="ptvid"/>
+		<result property="value" column="value"/>
+		<collection property="product" ofType="Product">
+			<id property="id" column="id"/>
+			<result property="name" column="name"/>
+			<result property="subTitle" column="subTitle"/>
+			<result property="orignalPrice" column="orignalPrice"/>
+			<result property="promotePrice" column="promotePrice"/>
+			<result property="stock" column="stock"/>
+			<result property="cid" column="cid"/>
+			<result property="datetime" column="datetime"/>
+			<collection property="firstProductImage" ofType="ProductImage">
+				<id property="id" column="pimgid"/>
+				<result property="pid" column="pid"/>
+				<result property="type" column="type"/>
+			</collection>
+		</collection>
+		<collection property="property" ofType="Property">
+			<id property="id" column="ptid"/>
+			<result property="cid" column="ptcid"/>
+			<result property="name" column="ptname"/>
+		</collection>
+	</resultMap>
+
+	<select id="queryByPid" resultMap="PropertyvalueMap">
+		select ptv.id ptvid,pt.name ptname,ptv.value from property pt,propertyvalue ptv,product p where pt.cid = p.cid and ptv.ptid = pt.id and p.id = ptv.pid and p.id = #{pid};
+	</select>
+	<insert id="add" parameterType="Propertyvalue">
+		
+	</insert>
+	<select id="queryByPage" parameterType="map" resultType="Propertyvalue">
+		
+	</select>
+	<select id="getTotals" parameterType="map" resultType="int">
+		
+	</select>
+	<delete id="deleteById">
+		
+	</delete>
+	<update id="update">
+		update propertyvalue
+		<trim prefix="set" suffixOverrides=",">
+			<if test="value!=null and value!=''">
+				value = #{value},
+			</if>
+		</trim>
+		where id = #{id}
+	</update>
+</mapper>

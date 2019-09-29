@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- <mapper namespace="com.entor.mapper.userMapper"> -->
+<mapper namespace="Review"><!-- 与接口关联上 -->
+
+	<resultMap type="Review" id="ReviewMap">
+		<id property="id" column="id"/>
+		<result property="pid" column="pid"/>
+		<result property="content" column="content"/>
+		<result property="createDate" column="createDate"/>
+		<collection property="user" ofType="User">
+			<id property="id" column="uid"/>
+			<result property="anonymousName" column="name"/>
+		</collection>
+	</resultMap>
+	
+
+	<select id="queryByPid" resultMap="ReviewMap">
+		select r.*,u.`name` from review r,user u where r.pid = #{pid} and r.uid = u.id;	
+	</select>
+	<insert id="add" parameterType="Review">
+		
+	</insert>
+	<select id="queryByPage" parameterType="map" resultType="Review">
+		
+	</select>
+	<select id="getTotals" parameterType="map" resultType="int">
+		
+	</select>
+	<select id="getTotalsByPid" parameterType="int" resultType="int">
+		select count(*) from review where pid = #{pid}
+	</select>
+	<delete id="deleteById">
+		
+	</delete>
+	<update id="update"/>
+		
+</mapper>

@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- <mapper namespace="com.entor.mapper.userMapper"> -->
+<mapper namespace="Product"><!-- 与接口关联上 -->
+
+	<resultMap type="Product" id="ProductMap">
+		<id property="id" column="id"/>
+		<result property="name" column="name"/>
+		<result property="subTitle" column="subTitle"/>
+		<result property="originalPrice" column="originalPrice"/>
+		<result property="promotePrice" column="promotePrice"/>
+		<result property="stock" column="stock"/>
+		<result property="cid" column="cid"/>
+		<result property="datetime" column="datetime"/>
+		<result property="reviewCount" column="reviewCount"/>
+		<result property="saleCount" column="saleCount"/>
+		<collection property="firstProductImage" ofType="ProductImage">
+			<id property="id" column="pimgid"/>
+			<result property="pid" column="pid"/>
+			<result property="type" column="type"/>
+		</collection>
+	</resultMap>
+
+	<select id="queryById" resultType="Product">
+		select * from product where id = #{id}
+	</select>
+	<select id="queryByPid" resultType="Product">
+		<!-- select s.*,count(r.id) reviewCount,sum(oi.number) saleCount from (select p.id id,p.name name,p.subTitle,p.orignalPrice,p.promotePrice,p.stock,p.cid,max(pi.id) piid from product p,productimage pi where p.id = #{pid} and p.id = pi.pid and pi.type = 'type_single' GROUP BY p.id)s,review r,orderitem oi where r.pid = s.id and oi.pid = s.id
+		 -->
+		 select p.id id,p.name name,p.subTitle,p.orignalPrice,p.promotePrice,p.stock,p.cid,max(pi.id) piid from product p,productimage pi where p.id = #{id} and p.id = pi.pid and pi.type = 'type_single' GROUP BY p.id
+	</select>
+	<select id="queryByCid" resultType="Product">
+		select * from product where cid = #{cid}
+	</select>
+	<insert id="add" parameterType="Product">
+		insert into product (name,subTitle,orignalPrice,promotePrice,stock,cid) values (#{name},#{subTitle},#{orignalPrice},#{promotePrice},#{cid},now())
+		<selectKey keyProperty="id" order="AFTER" resultType="int">
+			select last_insert_id() as id
+		</selectKey>
+	</insert>
+	<select id="queryPageByCid" parameterType="map" resultType="Product">
+		select * from product p where p.cid = #{cid} order by id limit #{start},#{pageSize}
+	</select>
+	<select id="queryByPage" parameterType="map" resultType="Product">
+		select * from product where order by id limit #{start},#{pageSize}
+	</select>
+	<select id="getTotals" parameterType="map" resultType="int">
+		select count(*) from product
+	</select>
+	<select id="getTotalsByCid" parameterType="map" resultType="int">
+		select count(*) from product where cid = #{cid}
+	</select>
+	<delete id="deleteById">
+		delete from product where id =#{id}
+	</delete>
+	<update id="update">
+		update product
+		<trim prefix="set" suffixOverrides=",">
+			<if test="name!=null and name!=''">
+				name = #{name},
+			</if>
+			<if test="subTitle!=null and subTitle!=''">
+				subTitle = #{subTitle},
+			</if>
+			<if test="orignalPrice!=null and orignalPrice!=''">
+				orignalPrice = #{orignalPrice},
+			</if>
+			<if test="promotePrice!=null and promotePrice!=''">
+				promotePrice = #{promotePrice},
+			</if>
+			<if test="stock!=null and stock!=''">
+				stock = #{stock},
+			</if>
+		</trim>
+		where id = #{id}
+	</update>
+</mapper>

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- <mapper namespace="com.entor.mapper.userMapper"> -->
+<mapper namespace="ProductImage"><!-- 与接口关联上 -->
+
+
+	<select id="queryById" resultType="ProductImage">
+		select * from productimage where id = #{id}
+	</select>
+	<select id="queryTypeSingle" resultType="ProductImage">
+		select * from productimage where pid = #{pid} and type = 'type_single'
+	</select>
+	<select id="queryTypeDetail" resultType="ProductImage">
+		select * from productimage where pid = #{pid} and type = 'type_detail'
+	</select>
+	<insert id="add" parameterType="ProductImage">
+		<!-- insert into product (name,subTitle,orignalPrice,promotePrice,stock,cid) values (#{name},#{subTitle},#{orignalPrice},#{promotePrice},#{cid},now())
+		 --><!-- <selectKey keyProperty="id" order="AFTER" resultType="int">
+			select last_insert_id() as id
+		</selectKey> -->
+	</insert>
+	<select id="queryByPid" resultType="ProductImage">
+		select *  from productimage where id = (select max(id) from productimage where pid = #{pid} and type = 'type_single')
+	</select>
+	<select id="queryByPage" parameterType="map" resultType="ProductImage">
+		select * from productImage order by id limit #{start},#{pageSize}
+	</select>
+	<select id="getTotals" parameterType="map" resultType="int">
+		<!-- select count(*) from product -->
+	</select>
+	<delete id="deleteById">
+		<!-- delete from product where id =#{id} -->
+	</delete>
+	<update id="update">
+		<!-- update product
+		<trim prefix="set" suffixOverrides=",">
+			<if test="name!=null and name!=''">
+				name = #{name},
+			</if>
+			<if test="subTitle!=null and subTitle!=''">
+				subTitle = #{subTitle},
+			</if>
+			<if test="orignalPrice!=null and orignalPrice!=''">
+				orignalPrice = #{orignalPrice},
+			</if>
+			<if test="promotePrice!=null and promotePrice!=''">
+				promotePrice = #{promotePrice},
+			</if>
+			<if test="stock!=null and stock!=''">
+				stock = #{stock},
+			</if>
+		</trim>
+		where id = #{id} -->
+	</update>
+</mapper>
